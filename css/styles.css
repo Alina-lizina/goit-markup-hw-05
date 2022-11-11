@@ -1,7 +1,6 @@
 body{
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    font-weight: 400;
     letter-spacing: 0.03rem;
 }
 /* reset */
@@ -98,6 +97,10 @@ img{
     position: relative;
 }
 
+.navigation a{
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .current::after{
     content:'';
     display: block;
@@ -107,7 +110,6 @@ img{
     width: 100%;
     height: 4px;
     background-color: #2196F3;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 2px;
 }
 
@@ -121,6 +123,13 @@ img{
     display: flex;
     align-items: center;
     color: rgba(255, 255, 255, 0.6);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    color: #757575; 
+    font-weight: 500;
+}
+
+.email:hover, .email:focus, .tel:hover, .tel:focus{
+    color: #2196F3;
 }
 
 .contact-info{
@@ -131,11 +140,6 @@ img{
    margin-right: 10px;
    fill: currentColor;
 }
-
-.contact a {color: #757575; font-weight: 500;}
-header a:hover {color: #2196F3; fill: #2196F3;}
-a:hover.logo{color: #000;}
-
 
 .main-banner{
     padding-top: 200px;
@@ -243,6 +247,7 @@ a:hover.logo{color: #000;}
     width: 370px;
     height: 70px;
     color: #fff;
+    font-weight: 700;
 }
 
 .team{
@@ -309,6 +314,7 @@ a:hover.logo{color: #000;}
     height: 44px;
     width: 44px;
     border-radius: 50%;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon:hover, .icon:focus{
@@ -343,6 +349,7 @@ a:hover.logo{color: #000;}
     height: 92px;
     border: 1px solid #AFB1B8;
     border-radius: 4px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client:hover, .client:focus{
@@ -398,14 +405,16 @@ a:hover.logo{color: #000;}
     width: 44px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-icon:hover{
+.footer-icon:hover, .footer-icon:focus{
     display: inline-block;
     color: #fff;
-    background: #2196F3;
+    background-color: #2196F3;
     border-radius: 50px;
     height: 44px;
+    width: 44px;
 }
 
 .portfolio{
@@ -428,6 +437,7 @@ a:hover.logo{color: #000;}
     border-radius: 4px; 
     border: none;
     padding: 6px 22px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-button:hover, .portfolio-button:focus{
@@ -444,8 +454,7 @@ a:hover.logo{color: #000;}
 }
 .card{
     width: 370px;
-    background-color: #fff;
-    border: 1px solid #EEEEEE;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover, .card:focus{
@@ -456,7 +465,6 @@ a:hover.logo{color: #000;}
     border: #eee solid 1px;
     border-top: none;
     padding: 22px 20px 24px 20px;
-    margin-top: -2px;
 }
 
 .portfolio-title{
@@ -478,7 +486,7 @@ a:hover.logo{color: #000;}
     position: relative;
     overflow: hidden;
 }
-.card:hover .overlay-card {
+.card:hover .overlay-card, .card:focus .overlay-card {
   transform: translateY(0);
 }
 
@@ -491,7 +499,7 @@ a:hover.logo{color: #000;}
     background-color: rgba(33, 150, 243, 0.9);
 
     transform: translateY(100%);
-    transition: transform 250ms ease;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .overlay-text {
@@ -504,37 +512,39 @@ a:hover.logo{color: #000;}
 }
 
 .backdrop{
-    visibility: visible; 
-    opacity: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: opacity 150ms ease, visibility 150ms ease;
 }
 
-.is-hidden{
+.backdrop.is-hidden{
     visibility: hidden; 
     opacity: 0;
     pointer-events: none;
 }
 
 .modal-form{
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #FFFFFF;
     width: 528px;
-    height: 581px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    margin-top: 221px;
-    margin-bottom: 222px;
+    min-height: 581px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    opacity: 1;
+    transition: transform 300ms, opacity 300ms;
 }
 
+.backdrop.is-hidden .modal-form{
+    transform: translate(-50%, -70%);
+    opacity: 0;
+}
 
 .close-btn{
     position: absolute;
@@ -546,7 +556,9 @@ a:hover.logo{color: #000;}
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     cursor: pointer;
-    fill: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .close-icon{
